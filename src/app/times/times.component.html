@@ -1,0 +1,14 @@
+<div class="timesTitle">
+  {{ this.mapsService.selectedMap }}
+  </div>
+<div class="avgTime">
+  Average Time: {{this.timesService.averageTime}}
+</div>
+
+  <mat-selection-list #list [(ngModel)]="selectedTimes" (ngModelChange)="onNgModelChange($event)">
+  <mat-list-option *ngFor="let time of this.timesService.selectedmapTimes" [value]="time">{{time[0]}} ({{time[1]}})</mat-list-option>
+  </mat-selection-list>
+
+
+<button mat-raised-button (click)="deleteTime()">Delete</button>
+
