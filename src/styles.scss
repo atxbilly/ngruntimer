@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("//fonts.googleapis.com/css?family=Raleway");
 @import url("//fonts.googleapis.com/css?family=Inconsolata");
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/theming';
+@import './theme.scss';
 
 
 .mat-toolbar {
@@ -50,6 +51,7 @@
   font-size: 48pt;
   text-align: center;
   font-family: Inconsolata;
+  color: rgb(255, 255, 255);
 }
 .buttons {
   text-align: center;
@@ -62,9 +64,19 @@
 .timesTitle {
   font-size: 24pt;
   font-family: Raleway;
+  color: rgb(255, 255, 255);
 }
 
 .avgTime {
   font-size: 18pt;
   font-family: Raleway;
+  color: rgb(255, 255, 255);
+}
+
+body {
+  background-color: black;
+}
+
+.mapselect {
+  color: rgb(255, 255, 255);
 }

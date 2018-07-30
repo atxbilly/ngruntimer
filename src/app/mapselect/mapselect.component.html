@@ -1,6 +1,6 @@
 <form class="map-select">
   <mat-form-field class="example-full-width">
-    <input type="text" placeholder="Pick a map" aria-label="Map" matInput [formControl]="myControl" [matAutocomplete]="auto">
+    <input type="text" placeholder="Pick a map" aria-label="Map" matInput [formControl]="myControl" [matAutocomplete]="auto" style="color: aliceblue;">
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
         {{option}}

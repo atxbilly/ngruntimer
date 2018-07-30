@@ -35,6 +35,8 @@ import { MapselectComponent } from './mapselect/mapselect.component';
 import { TimerComponent } from './timer/timer.component';
 import { TimesComponent } from './times/times.component';
 
+import { OverlayModule} from '@angular/cdk/overlay';
+
 
 @NgModule({
   declarations: [
@@ -72,7 +74,9 @@ import { TimesComponent } from './times/times.component';
     MatSidenavModule,
     MatProgressBarModule,
     MatAutocompleteModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    OverlayModule
+
   ],
   providers: [PendingChangesGuard],
   bootstrap: [AppComponent]
