@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("//fonts.googleapis.com/css?family=Raleway");
+@import url("//fonts.googleapis.com/css?family=Inconsolata");
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 
@@ -48,6 +49,7 @@
 .formattedtime {
   font-size: 48pt;
   text-align: center;
+  font-family: Inconsolata;
 }
 .buttons {
   text-align: center;
