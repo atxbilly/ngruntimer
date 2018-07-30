@@ -66,12 +66,19 @@ export class TimerComponent implements OnInit {
       this.timesService.alltimes.unshift(
         maptimepair
       );
+      this.timesService.selectedmapTimes.unshift(
+        maptimepair[maptopush]
+      );
       this.formatted_time = '00:00.00';
       this.timesService.getTimes(this.mapsService.selectedMap);
       this.timesService.showTimes = true;
     } else {
       alert('Please choose a valid map.');
     }
+    // maptimepair = {};
+    // timetopush = '';
+    // this._elapsedTime = '';
+    // this._avgDifference = 0;
   }
 
   ngOnInit() {
