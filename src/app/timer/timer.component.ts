@@ -29,7 +29,7 @@ export class TimerComponent implements OnInit {
       } else { this._startTime = Date.now() - this._pausetime; }
       this.intervalId = setInterval(() => {
         this.timeIt();
-      }, 100);
+      }, 10);
     }
     this._isRunning = true;
     this._paused = false;
