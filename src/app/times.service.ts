@@ -55,7 +55,7 @@ export class TimesService {
             const r = Number(t.split(':')[1]) * 1000;
             const timeInMilli = s + r;
             // This is redundant DELETE?!
-            // this.selectedmapTimes[j][1] = this.milli2time(timeInMilli - this.averageMilliTime );
+            this.selectedmapTimes[j][1] = this.milli2time(timeInMilli - this.averageMilliTime );
 
             // If the first character of the formatted difference from average is NOT negative, add a '+' to the beginning of that string
             if (this.selectedmapTimes[j][1][0] !== '-') {
