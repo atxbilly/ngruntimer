@@ -77,7 +77,7 @@ export class TimerComponent implements OnInit {
         alert('Please choose a valid map.');
       }
       maptimepair = {};
-      timetopush = '';
+      timetopush = 0;
       this._elapsedTime = 0;
       this._avgDifference = 0;
     }
