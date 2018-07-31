@@ -44,10 +44,12 @@ export class TimerComponent implements OnInit {
   }
 
   pause() {
-    clearInterval(this.intervalId);
-    this._paused = true;
-    this._isRunning = false;
-    this._pausetime = this.timesService.elapsedTime;
+    if (this._isRunning === true) {
+      clearInterval(this.intervalId);
+      this._paused = true;
+      this._isRunning = false;
+      this._pausetime = this.timesService.elapsedTime;
+    }
   }
 
   timeIt() {
