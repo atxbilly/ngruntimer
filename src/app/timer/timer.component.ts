@@ -22,16 +22,20 @@ export class TimerComponent implements OnInit {
   constructor(public mapsService: MapsService, public timesService: TimesService) { }
 
   start() {
-    if (this._isRunning === false) {
-      if (this._paused === false) {
-        this._startTime = Date.now();
-      } else { this._startTime = Date.now() - this._pausetime; }
-      this.intervalId = setInterval(() => {
-        this.timeIt();
-      }, 10);
+    if (this.mapsService.selectedMap !== '') {
+      if (this._isRunning === false) {
+        if (this._paused === false) {
+          this._startTime = Date.now();
+        } else { this._startTime = Date.now() - this._pausetime; }
+        this.intervalId = setInterval(() => {
+          this.timeIt();
+        }, 10);
+      }
+      this._isRunning = true;
+      this._paused = false;
+    } else {
+      alert('Choose a map.');
     }
-    this._isRunning = true;
-    this._paused = false;
   }
 
   stop() {
