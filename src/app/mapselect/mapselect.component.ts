@@ -36,6 +36,8 @@ export class MapselectComponent implements OnInit {
       if (this.mapsService.maps.includes(val)) {
         this.mapsService.selectedMap = val;
         this.timesService.averageTime = '';
+        this.timesService.formatted_time = '00:00.00';
+        this.timesService.elapsedTime = 0;
         this.timesService.getTimes(val);
       }
     });

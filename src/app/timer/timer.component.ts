@@ -11,9 +11,8 @@ import { TimesService } from '../times.service';
 })
 export class TimerComponent implements OnInit {
 
-  _elapsedTime = 0;
   _startTime;
-  formatted_time = '00:00.00';
+  // formatted_time = '00:00.00';
   intervalId;
   _isRunning = false;
   _paused = false;
@@ -44,12 +43,12 @@ export class TimerComponent implements OnInit {
     clearInterval(this.intervalId);
     this._paused = true;
     this._isRunning = false;
-    this._pausetime = this._elapsedTime;
+    this._pausetime = this.timesService.elapsedTime;
   }
 
   timeIt() {
-   this._elapsedTime = Date.now() - this._startTime;
-    this.formatted_time = this.milli2time(this._elapsedTime);
+   this.timesService.elapsedTime = Date.now() - this._startTime;
+    this.timesService.formatted_time = this.milli2time(this.timesService.elapsedTime);
   }
 
   milli2time(totalMilliseconds) {
@@ -57,12 +56,13 @@ export class TimerComponent implements OnInit {
     return duration;
 }
   save() {
+    console.log(this.timesService.elapsedTime);
     const maptopush = this.mapsService.selectedMap;
-    let timetopush = this._elapsedTime;
+    let timetopush = this.timesService.elapsedTime;
     let maptimepair = {};
     maptimepair[maptopush] = [timetopush, this._avgDifference];
 
-    if (this._elapsedTime !== 0) {
+    if (this.timesService.elapsedTime !== 0) {
       if (this.mapsService.maps.includes(this.mapsService.selectedMap)) {
         this.timesService.alltimes.unshift(
           maptimepair
@@ -70,7 +70,7 @@ export class TimerComponent implements OnInit {
         this.timesService.selectedmapTimes.unshift(
           maptimepair[maptopush]
         );
-        this.formatted_time = '00:00.00';
+        this.timesService.formatted_time = '00:00.00';
         this.timesService.getTimes(this.mapsService.selectedMap);
         this.timesService.showTimes = true;
       } else {
@@ -78,12 +78,13 @@ export class TimerComponent implements OnInit {
       }
       maptimepair = {};
       timetopush = 0;
-      this._elapsedTime = 0;
+      this.timesService.elapsedTime = 0;
       this._avgDifference = 0;
     }
   }
 
   ngOnInit() {
+    this.timesService.formatted_time = '00:00.00';
   }
 
 }

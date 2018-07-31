@@ -16,6 +16,7 @@ export class TimesService {
   showTimes: Boolean;
   averageMilliTime: number;
   avgDifference: number;
+  formatted_time = '00:00.00';
 
 
   public getTimes(map) {
