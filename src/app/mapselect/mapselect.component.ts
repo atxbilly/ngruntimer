@@ -38,6 +38,6 @@ export class MapselectComponent implements OnInit {
         this.timesService.averageTime = '';
         this.timesService.getTimes(val);
       }
-      console.log(this.mapsService.selectedMap); });
+    });
   }
 }

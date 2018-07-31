@@ -11,7 +11,7 @@ import { TimesService } from '../times.service';
 })
 export class TimerComponent implements OnInit {
 
-  _elapsedTime;
+  _elapsedTime = 0;
   _startTime;
   formatted_time = '00:00.00';
   intervalId;
@@ -58,27 +58,29 @@ export class TimerComponent implements OnInit {
 }
   save() {
     const maptopush = this.mapsService.selectedMap;
-    const timetopush = this._elapsedTime;
-    const maptimepair = {};
+    let timetopush = this._elapsedTime;
+    let maptimepair = {};
     maptimepair[maptopush] = [timetopush, this._avgDifference];
 
-    if (this.mapsService.maps.includes(this.mapsService.selectedMap)) {
-      this.timesService.alltimes.unshift(
-        maptimepair
-      );
-      this.timesService.selectedmapTimes.unshift(
-        maptimepair[maptopush]
-      );
-      this.formatted_time = '00:00.00';
-      this.timesService.getTimes(this.mapsService.selectedMap);
-      this.timesService.showTimes = true;
-    } else {
-      alert('Please choose a valid map.');
+    if (this._elapsedTime !== 0) {
+      if (this.mapsService.maps.includes(this.mapsService.selectedMap)) {
+        this.timesService.alltimes.unshift(
+          maptimepair
+        );
+        this.timesService.selectedmapTimes.unshift(
+          maptimepair[maptopush]
+        );
+        this.formatted_time = '00:00.00';
+        this.timesService.getTimes(this.mapsService.selectedMap);
+        this.timesService.showTimes = true;
+      } else {
+        alert('Please choose a valid map.');
+      }
+      maptimepair = {};
+      timetopush = '';
+      this._elapsedTime = 0;
+      this._avgDifference = 0;
     }
-    // maptimepair = {};
-    // timetopush = '';
-    // this._elapsedTime = '';
-    // this._avgDifference = 0;
   }
 
   ngOnInit() {
