@@ -67,8 +67,6 @@ export class TimesService {
       }
     }
     this.averageTime = this.avgTimes(this.milliTimes);
-
-
   }
   public milli2time(totalMilliseconds) {
     const duration = moment.duration(totalMilliseconds, 'milliseconds').format('mm:ss.SS', { trim: false });
@@ -82,4 +80,13 @@ export class TimesService {
     this.averageMilliTime = sum / milliTimes.length;
     return this.milli2time(this.averageMilliTime);
   }
+  public getBest(milliTimes) {
+    const arr = milliTimes;
+    const min = Math.min(...arr);
+    this.bestMilliTime = min;
+    if (this.bestMilliTime !== Infinity) { 
+      this.bestTime = this.milli2time(this.bestMilliTime);
+    } else {this.bestTime = 'N/A'; }
+  }
 }
+

@@ -39,11 +39,13 @@ export class TimesComponent implements OnInit {
             if (allindex > -1) {
               this.timesService.alltimes.splice(allindex, 1);
               this.timesService.getTimes(this.mapsService.selectedMap);
+              this.timesService.getBest(this.timesService.milliTimes);
             }
           }
         }
       });
     });
+    this.timesService.getBest(this.timesService.milliTimes);
   }
 }
 

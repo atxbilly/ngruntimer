@@ -32,13 +32,14 @@ export class MapselectComponent implements OnInit {
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
   public onChange(): void {
-    this.myControl.valueChanges.subscribe(val => {
-      if (this.mapsService.maps.includes(val)) {
-        this.mapsService.selectedMap = val;
+    this.myControl.valueChanges.subscribe(map => {
+      if (this.mapsService.maps.includes(map)) {
+        this.mapsService.selectedMap = map;
         this.timesService.averageTime = '';
         this.timesService.formatted_time = '00:00.00';
         this.timesService.elapsedTime = 0;
-        this.timesService.getTimes(val);
+        this.timesService.getTimes(map);
+        this.timesService.getBest(this.timesService.milliTimes);
       }
     });
   }

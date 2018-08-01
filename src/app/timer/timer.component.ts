@@ -78,6 +78,7 @@ export class TimerComponent implements OnInit {
         );
         this.timesService.formatted_time = '00:00.00';
         this.timesService.getTimes(this.mapsService.selectedMap);
+        this.timesService.getBest(this.timesService.milliTimes);
         this.timesService.showTimes = true;
       } else {
         alert('Please choose a valid map.');
